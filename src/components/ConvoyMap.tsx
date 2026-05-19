@@ -11,23 +11,29 @@ import {
 import L from "leaflet";
 import type { LatLngExpression } from "leaflet";
 import type { PositionsMap } from "../types/position";
+import { cssVar } from "../styles/cssVar";
 import "./ConvoyMap.css";
 
 const DEFAULT_CENTER: LatLngExpression = [19.12, 72.9];
 const DEFAULT_ZOOM = 13;
 
-const USER_COLORS: Record<string, string> = {
-  "user-1": "#2563eb",
-  "user-2": "#16a34a",
-  "user-3": "#ea580c",
-  "user-4": "#9333ea",
+const USER_COLOR_VARS: Record<string, string> = {
+  "user-1": "--color-user-1",
+  "user-2": "--color-user-2",
+  "user-3": "--color-user-3",
+  "user-4": "--color-user-4",
 };
 
+const FALLBACK_COLOR_VARS = [
+  "--color-user-fallback-1",
+  "--color-user-fallback-2",
+  "--color-user-fallback-3",
+] as const;
+
 function colorForUser(userId: string, index: number): string {
-  return (
-    USER_COLORS[userId] ??
-    ["#dc2626", "#0891b2", "#ca8a04"][index % 3]
-  );
+  const token =
+    USER_COLOR_VARS[userId] ?? FALLBACK_COLOR_VARS[index % 3];
+  return cssVar(token);
 }
 
 function FitBounds({ positions }: { positions: PositionsMap }) {
@@ -89,7 +95,7 @@ export default function ConvoyMap({
           <Polyline
             positions={polylinePoints}
             pathOptions={{
-              color: "#6366f1",
+              color: cssVar("--color-route"),
               weight: 3,
               opacity: 0.7,
               dashArray: "8 6",
@@ -121,7 +127,7 @@ export default function ConvoyMap({
                 position={center}
                 icon={L.divIcon({
                   className: "convoy-marker-icon",
-                  html: `<span class="convoy-marker-dot" style="background:${color};${isCurrentUser ? "box-shadow:0 0 0 3px #fff,0 0 0 5px " + color + ";" : ""}"></span>`,
+                  html: `<span class="convoy-marker-dot" style="background:${color};${isCurrentUser ? `box-shadow:0 0 0 3px var(--color-marker-ring),0 0 0 5px ${color};` : ""}"></span>`,
                   iconSize: [20, 20],
                   iconAnchor: [10, 10],
                 })}

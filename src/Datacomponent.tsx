@@ -177,12 +177,12 @@ const DataComponent: React.FC = () => {
   }
 
   if (error) {
-    return <div style={{ color: "red" }}>Error: {error}</div>;
+    return <div className="text-error">Error: {error}</div>;
   }
 
   if (errorPosition) {
     return (
-      <div style={{ color: "red" }}>
+      <div className="text-error">
         Location error: {errorPosition.message}
       </div>
     );
@@ -258,7 +258,7 @@ const DataComponent: React.FC = () => {
                   <li key={userId}>
                     → {userId}: {(meters / 1000).toFixed(2)} km ({meters} m)
                     {lowAccuracy && (
-                      <span style={{ color: "orange" }}>
+                      <span className="text-warning">
                         {" "}
                         (low GPS accuracy)
                       </span>

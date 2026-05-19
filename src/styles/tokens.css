@@ -1,0 +1,88 @@
+/* Design tokens — single source of truth for colors, type, spacing */
+
+:root {
+  color-scheme: dark;
+
+  /* Canvas */
+  --color-bg: #0a0c10;
+  --color-bg-elevated: #0d0f14;
+  --color-surface: #141720;
+  --color-surface-2: #1c2030;
+
+  /* Text */
+  --color-text: #f0f2f7;
+  --color-text-muted: rgba(240, 242, 247, 0.45);
+  --color-text-heading: #f0f2f7;
+
+  /* Borders & shadows */
+  --color-border: rgba(255, 255, 255, 0.07);
+  --color-border-strong: rgba(255, 255, 255, 0.12);
+  --color-shadow: rgba(0, 0, 0, 0.35);
+  --color-shadow-soft: rgba(0, 0, 0, 0.15);
+
+  /* Brand & semantic */
+  --color-accent: #4f8cff;
+  --color-accent-2: #f5a623;
+  --color-success: #34d399;
+  --color-danger: #f87171;
+  --color-warning: #f5a623;
+  --color-info: #a78bfa;
+
+  /* Map */
+  --color-map-mock-bg: #182233;
+  --color-map-mock-grid: #263545;
+  --color-map-mock-road: #213040;
+  --color-route: #6366f1;
+  --color-marker-ring: #ffffff;
+  --color-map-legend-bg: rgba(20, 23, 32, 0.92);
+  --color-legend-swatch-border: rgba(255, 255, 255, 0.15);
+
+  /* Per-user marker colors (also read from ConvoyMap.tsx) */
+  --color-user-1: #2563eb;
+  --color-user-2: #16a34a;
+  --color-user-3: #ea580c;
+  --color-user-4: #9333ea;
+  --color-user-fallback-1: #dc2626;
+  --color-user-fallback-2: #0891b2;
+  --color-user-fallback-3: #ca8a04;
+
+  /* Typography */
+  --font-head: "Syne", system-ui, sans-serif;
+  --font-body: "DM Sans", system-ui, sans-serif;
+  --font-mono: ui-monospace, Consolas, monospace;
+
+  /* Spacing & radius */
+  --radius-sm: 6px;
+  --radius-md: 8px;
+  --space-2: 0.5rem;
+  --space-3: 0.75rem;
+  --space-4: 1rem;
+  --space-6: 1.5rem;
+
+  /* Layout */
+  --content-max-width: 72rem;
+}
+
+@media (prefers-color-scheme: light) {
+  :root {
+    color-scheme: light;
+
+    --color-bg: #f0f2f7;
+    --color-bg-elevated: #ffffff;
+    --color-surface: #ffffff;
+    --color-surface-2: #e8eaef;
+
+    --color-text: #1a1d26;
+    --color-text-muted: rgba(26, 29, 38, 0.55);
+    --color-text-heading: #08060d;
+
+    --color-border: #e2e8f0;
+    --color-border-strong: #cbd5e1;
+    --color-shadow: rgba(0, 0, 0, 0.12);
+    --color-shadow-soft: rgba(0, 0, 0, 0.08);
+
+    --color-accent: #3b6fd9;
+    --color-map-legend-bg: rgba(255, 255, 255, 0.92);
+    --color-legend-swatch-border: rgba(0, 0, 0, 0.15);
+  }
+}
